@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClassVault – Public Class Recording Library</title>
+  <meta name="description" content="Access recorded classes, revise subjects, and watch full lessons easily in one central place.">
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header" id="header">
+    <div class="container header-container">
+      <a href="#home" class="brand" id="brandLogoLink" aria-label="ClassVault Home">
+        <img src="assets/logo.svg" alt="ClassVault Logo" class="brand-logo" width="36" height="36">
+        <span class="brand-text">ClassVault <span class="brand-badge">Archive</span></span>
+      </a>
+
+      <!-- Header Search (visible on desktop in public view) -->
+      <div class="header-search-wrapper" id="headerSearchWrapper" role="search">
+        <span class="header-search-icon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </span>
+        <input 
+          type="search" 
+          id="headerSearchInput" 
+          class="header-search-input" 
+          placeholder="Quick search recordings..." 
+          aria-label="Quick search recordings"
+        >
+      </div>
+
+      <!-- Navigation Links & Blue Admin Button -->
+      <nav class="site-nav" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#home" id="navHomeLink" class="nav-link active">Home</a></li>
+          <li><a href="#subjects" id="navSubjectsLink" class="nav-link">Subjects</a></li>
+          <li><a href="#recordings" id="navRecordingsLink" class="nav-link">Recordings</a></li>
+        </ul>
+        <button type="button" id="navAdminBtn" class="btn-admin-nav" aria-label="Open Admin Management Panel">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+          <span>Admin</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="mainContainer">
+    <!-- ==================== VIEW 1: PUBLIC HOMEPAGE VIEW ==================== -->
+    <div id="publicView" class="view-panel">
+      <!-- Hero Section -->
+      <section class="hero-section" id="home">
+        <div class="container">
+          <div class="hero-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            <span>Free Educational Library</span>
+          </div>
+          <h1 class="hero-title">Your Classroom. Anytime. Anywhere.</h1>
+          <p class="hero-desc">
+            Access your recorded classes in one place. Learn, revise and never miss a lesson.
+          </p>
+
+          <!-- Hero Search Bar -->
+          <div class="search-bar-container">
+            <div class="search-bar" role="search">
+              <div class="search-bar-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </div>
+              <input 
+                type="text" 
+                id="heroSearchInput" 
+                class="search-input" 
+                placeholder="Search by topic, subject, or keywords..." 
+                autocomplete="off"
+                aria-label="Search recordings by topic, subject, or keywords"
+              >
+              <button type="button" id="searchClearBtn" class="search-clear-btn" aria-label="Clear search">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Statistics Section -->
+      <section class="stats-section" aria-label="Library Statistics">
+        <div class="container">
+          <div class="stats-grid">
+            <!-- Total Classes -->
+            <div class="stat-card">
+              <div class="stat-icon-wrapper" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+                  <line x1="7" y1="2" x2="7" y2="22"></line>
+                  <line x1="17" y1="2" x2="17" y2="22"></line>
+                  <line x1="2" y1="12" x2="22" y2="12"></line>
+                  <line x1="2" y1="7" x2="7" y2="7"></line>
+                  <line x1="2" y1="17" x2="7" y2="17"></line>
+                  <line x1="17" y1="17" x2="22" y2="17"></line>
+                  <line x1="17" y1="7" x2="22" y2="7"></line>
+                </svg>
+              </div>
+              <div class="stat-content">
+                <span class="stat-value" id="statTotalClasses">0</span>
+                <span class="stat-label">Total Recorded Classes</span>
+              </div>
+            </div>
+
+            <!-- Total Subjects -->
+            <div class="stat-card">
+              <div class="stat-icon-wrapper" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+              </div>
+              <div class="stat-content">
+                <span class="stat-value" id="statTotalSubjects">0</span>
+                <span class="stat-label">Active Subjects</span>
+              </div>
+            </div>
+
+            <!-- Recently Added -->
+            <div class="stat-card">
+              <div class="stat-icon-wrapper" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <div class="stat-content">
+                <span class="stat-value" id="statRecentClasses">0</span>
+                <span class="stat-label">Recent (Last 30 Days)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Subject Categories Section -->
+      <section class="subjects-section" id="subjects" aria-label="Subject Categories">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Explore by Subject</h2>
+              <p class="section-subtitle">Filter recordings by specific technologies or courses</p>
+            </div>
+          </div>
+          <div class="categories-wrapper" id="categoriesContainer" role="tablist" aria-label="Filter classes by subject">
+            <!-- Populated dynamically by app.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Recent Recordings Section -->
+      <section class="recordings-section" id="recordings" aria-label="Recordings Catalog">
+        <div class="container">
+          <div class="results-meta">
+            <div id="resultsCount" class="results-count">Loading recordings...</div>
+            <div id="activeFilterBadge" style="display: none;"></div>
+          </div>
+
+          <!-- Dynamic Grid -->
+          <div class="recordings-grid" id="recordingsGrid" aria-live="polite">
+            <!-- Skeletons / Cards dynamically injected -->
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ==================== VIEW 2: INTEGRATED ADMIN MANAGEMENT VIEW ==================== -->
+    <div id="adminView" class="view-panel" style="display: none;">
+      <div class="container" style="padding-top: 2rem; padding-bottom: 4rem;">
+        <!-- Admin Section Header -->
+        <div class="admin-panel-header">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <h1 class="card-title-main" style="margin-bottom: 0; font-size: 1.5rem;">Class Library Management</h1>
+            <span class="admin-badge-management">MANAGEMENT</span>
+          </div>
+          <button type="button" id="btnReturnPublic" class="btn-preview-site">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span>Return to Public Library</span>
+          </button>
+        </div>
+
+        <!-- Two-Column Grid: Left = Add Form, Right = Existing Recordings -->
+        <div class="dashboard-grid-layout">
+          <!-- Left Column: Add Class Recording Card -->
+          <section class="dashboard-card" aria-labelledby="formTitle">
+            <h2 id="formTitle" class="card-title-main">Add Class Recording</h2>
+            <form id="addClassForm" novalidate>
+              <!-- Class Title -->
+              <div class="form-group-item">
+                <label for="classTitle" class="form-label-item">
+                  Class Title <span class="required-mark">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="classTitle" 
+                  name="title" 
+                  class="form-input-field" 
+                  placeholder="e.g. Java Collections & Stream API"
+                  required
+                >
+              </div>
+
+              <!-- Subject Dropdown -->
+              <div class="form-group-item">
+                <label for="classSubject" class="form-label-item">
+                  Subject <span class="required-mark">*</span>
+                </label>
+                <select id="classSubject" name="subject" class="form-input-field" required>
+                  <option value="" disabled selected>Select a subject...</option>
+                  <!-- Injected dynamically from CONFIG.SUBJECTS -->
+                </select>
+              </div>
+
+              <!-- Recording Date -->
+              <div class="form-group-item">
+                <label for="classDate" class="form-label-item">
+                  Recording Date <span class="required-mark">*</span>
+                </label>
+                <input 
+                  type="date" 
+                  id="classDate" 
+                  name="date" 
+                  class="form-input-field" 
+                  required
+                >
+              </div>
+
+              <!-- Google Drive URL -->
+              <div class="form-group-item">
+                <label for="classDriveUrl" class="form-label-item">
+                  Google Drive URL <span class="required-mark">*</span>
+                </label>
+                <input 
+                  type="url" 
+                  id="classDriveUrl" 
+                  name="driveUrl" 
+                  class="form-input-field" 
+                  placeholder="https://drive.google.com/file/d/..."
+                  required
+                >
+              </div>
+
+              <!-- Description (Optional) -->
+              <div class="form-group-item">
+                <label for="classDescription" class="form-label-item">
+                  Description <span style="font-weight: 400; color: #64748b;">(optional)</span>
+                </label>
+                <textarea 
+                  id="classDescription" 
+                  name="description" 
+                  class="form-input-field" 
+                  rows="3" 
+                  placeholder="Key concepts discussed, homework, or notes..."
+                ></textarea>
+              </div>
+
+              <!-- Full-Width Dark Add Class Button -->
+              <button type="submit" id="submitAddBtn" class="btn-add-class">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <span>Add Class</span>
+              </button>
+            </form>
+          </section>
+
+          <!-- Right Column: Existing Recordings Card -->
+          <section class="dashboard-card" aria-labelledby="existingRecordingsTitle">
+            <!-- Card Header: Title & Total Count -->
+            <div class="table-header-row">
+              <div class="recordings-title-group">
+                <h2 id="existingRecordingsTitle" class="card-title-main" style="margin-bottom: 0;">Existing Recordings</h2>
+                <span class="recordings-count-badge" id="adminTotalCountBadge">0 recordings</span>
+              </div>
+            </div>
+
+            <!-- Toolbar: Search & Refresh -->
+            <div class="table-toolbar-row">
+              <div class="table-search-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input 
+                  type="search" 
+                  id="adminSearchInput" 
+                  class="table-search-field" 
+                  placeholder="Search recordings..." 
+                  aria-label="Search recordings"
+                >
+              </div>
+              <button type="button" id="refreshListBtn" class="btn-table-refresh" title="Refresh class records">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="23 4 23 10 17 10"></polyline>
+                  <polyline points="1 20 1 14 7 14"></polyline>
+                  <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                </svg>
+                <span>Refresh</span>
+              </button>
+            </div>
+
+            <!-- Table Container -->
+            <div class="table-scroll-container">
+              <table class="dashboard-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Class Title</th>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Drive Link</th>
+                    <th scope="col" style="text-align: right;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="adminRecordsTableBody">
+                  <!-- Dynamically populated by admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Edit Class Modal -->
+  <div class="dashboard-modal-backdrop" id="editModalOverlay" role="dialog" aria-modal="true" aria-labelledby="editModalTitle">
+    <div class="dashboard-modal-window">
+      <div class="dashboard-modal-header">
+        <h3 id="editModalTitle" class="dashboard-modal-title">Edit Class Recording</h3>
+        <button type="button" class="dashboard-modal-close" id="closeEditModalBtn" aria-label="Close edit modal">&times;</button>
+      </div>
+      <form id="editClassForm">
+        <div class="dashboard-modal-body">
+          <input type="hidden" id="editClassId" name="id">
+
+          <div class="form-group-item">
+            <label for="editClassTitle" class="form-label-item">Class Title <span class="required-mark">*</span></label>
+            <input type="text" id="editClassTitle" name="title" class="form-input-field" required>
+          </div>
+
+          <div class="form-group-item">
+            <label for="editClassSubject" class="form-label-item">Subject <span class="required-mark">*</span></label>
+            <select id="editClassSubject" name="subject" class="form-input-field" required></select>
+          </div>
+
+          <div class="form-group-item">
+            <label for="editClassDate" class="form-label-item">Recording Date <span class="required-mark">*</span></label>
+            <input type="date" id="editClassDate" name="date" class="form-input-field" required>
+          </div>
+
+          <div class="form-group-item">
+            <label for="editClassDriveUrl" class="form-label-item">Google Drive URL <span class="required-mark">*</span></label>
+            <input type="url" id="editClassDriveUrl" name="driveUrl" class="form-input-field" required>
+          </div>
+
+          <div class="form-group-item" style="margin-bottom: 0;">
+            <label for="editClassDescription" class="form-label-item">Description</label>
+            <textarea id="editClassDescription" name="description" class="form-input-field" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="dashboard-modal-footer">
+          <button type="button" class="btn-preview-site" id="cancelEditBtn">Cancel</button>
+          <button type="submit" id="saveEditBtn" class="btn-add-class" style="width: auto; height: 36px; padding: 0 1rem; margin-top: 0;">
+            Save Changes
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div class="dashboard-modal-backdrop" id="deleteModalOverlay" role="dialog" aria-modal="true" aria-labelledby="deleteModalTitle">
+    <div class="dashboard-modal-window" style="max-width: 440px;">
+      <div class="dashboard-modal-header">
+        <h3 id="deleteModalTitle" class="dashboard-modal-title" style="color: #dc2626; display: flex; align-items: center; gap: 0.4rem;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          Delete Recording
+        </h3>
+        <button type="button" class="dashboard-modal-close" id="closeDeleteModalBtn" aria-label="Close delete modal">&times;</button>
+      </div>
+      <div class="dashboard-modal-body">
+        <p style="font-size: 0.925rem; color: #1e293b; margin-bottom: 0.75rem;">
+          Are you sure you want to delete <strong id="deleteTargetTitle">this class</strong>?
+        </p>
+        <p style="font-size: 0.825rem; color: #64748b; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 0.75rem; line-height: 1.5;">
+          <strong>Notice:</strong> This action only removes the metadata row from Google Sheets. Your original video stored in Google Drive will <strong>never</strong> be deleted.
+        </p>
+      </div>
+      <div class="dashboard-modal-footer">
+        <button type="button" class="btn-preview-site" id="cancelDeleteBtn">Cancel</button>
+        <button type="button" id="confirmDeleteBtn" class="btn-action-delete" style="padding: 0.5rem 1rem; font-size: 0.85rem; font-weight: 600; border-radius: 6px;">
+          Delete Metadata
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <img src="assets/logo.svg" alt="" width="24" height="24" aria-hidden="true">
+        <span>ClassVault</span>
+        <span class="footer-badge">Student Resource</span>
+      </div>
+      <p>Original class videos are securely stored in Google Drive. Links open directly in Viewer mode.</p>
+    </div>
+  </footer>
+
+  <!-- Toast Notifications Container -->
+  <div class="toast-container" id="toastContainer" aria-live="assertive"></div>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/classes.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
